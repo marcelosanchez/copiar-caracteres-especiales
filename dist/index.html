@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Copiar Caracteres Especiales</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+  <h1 style="margin: 0;">Copiar Caracteres Especiales</h1>
+    <p id="notificacion">...</p>
+
+    <!-- The button used to copy the text -->
+    <button id='btn_ámin_t' class='button' onclick='copiarAlPortapapeles("btn_ámin_t")' value='á'><span>á</span></button>
+    <button id='btn_émin_t' class='button' onclick='copiarAlPortapapeles("btn_émin_t")' value='é'><span>é</span></button>
+    <button id='btn_ímin_t' class='button' onclick='copiarAlPortapapeles("btn_ímin_t")' value='í'><span>í</span></button>
+    <button id='btn_ómin_t' class='button' onclick='copiarAlPortapapeles("btn_ómin_t")' value='ó'><span>ó</span></button>
+    <button id='btn_úmin_t' class='button' onclick='copiarAlPortapapeles("btn_úmin_t")' value='ú'><span>ú</span></button>
+
+    <!-- The button used to copy the text -->
+    <button id='btn_ámay_t' class='button' onclick='copiarAlPortapapeles("btn_ámay_t")' value='Á'><span>Á</span></button>
+    <button id='btn_émay_t' class='button' onclick='copiarAlPortapapeles("btn_émay_t")' value='É'><span>É</span></button>
+    <button id='btn_ímay_t' class='button' onclick='copiarAlPortapapeles("btn_ímay_t")' value='Í'><span>Í</span></button>
+    <button id='btn_ómay_t' class='button' onclick='copiarAlPortapapeles("btn_ómay_t")' value='Ó'><span>Ó</span></button>
+    <button id='btn_úmay_t' class='button' onclick='copiarAlPortapapeles("btn_úmay_t")' value='Ú'><span>Ú</span></button>
+
+    <!-- The button used to copy the text -->
+    <button id='btn_nmin_t' class='button' onclick='copiarAlPortapapeles("btn_nmin_t")' value='ñ'><span>ñ</span></button>
+    <button id='btn_nmay_t' class='button' onclick='copiarAlPortapapeles("btn_nmay_t")' value='Ñ'><span>Ñ</span></button>
+</div>
+<!-- partial -->
+  
+</body>
+</html>
+
+<script>
+function copiarAlPortapapeles(id_elemento) {
+    $("#notificacion").html("")
+    // Crea un campo de texto "oculto"
+    var aux = document.createElement("input");
+    let valor_elemento = document.getElementById(id_elemento).value
+    // Asigna el contenido del elemento especificado al valor del campo
+    aux.setAttribute("value", valor_elemento);
+
+    // Añade el campo a la página
+    document.body.appendChild(aux);
+
+    // Selecciona el contenido del campo
+    aux.select();
+
+    // Copia el texto seleccionado
+    document.execCommand("copy");
+
+    // Elimina el campo de la página
+    document.body.removeChild(aux);
+
+    $("#notificacion").html(`Caracter copiado: ${valor_elemento}`)
+
+}
+</script>
